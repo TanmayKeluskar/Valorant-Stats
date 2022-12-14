@@ -7,6 +7,10 @@
 We need to install all node modules before running any other scripts.
 This command installs a package and any packages that it depends on. If the package has a package-lock, or an npm shrinkwrap file, or a yarn lock file
 
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/120456100/207691579-4e36f72d-b3e6-4b25-a530-4d456be47cf0.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
