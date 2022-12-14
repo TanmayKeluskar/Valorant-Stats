@@ -1,6 +1,11 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Before Running the project
+
+### `npm install`
+
+We need to install all node modules before running any other scripts.
+This command installs a package and any packages that it depends on. If the package has a package-lock, or an npm shrinkwrap file, or a yarn lock file
 
 ## Available Scripts
 
