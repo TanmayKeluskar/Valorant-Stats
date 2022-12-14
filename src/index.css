@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@font-face {
+  font-family: "Valorant";
+  src: url(../src/assets/Valorant.ttf);
+}
+
+@font-face {
+  font-family: "poppins";
+  src: url(../src/assets/Poppins-Medium.ttf);
+}
+
+.container {
+  margin: 0;
+  padding: 40px 0;
+  width: 100%;
+  background: url(../src/assets/maps.jpg) no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: poppins;
+}
+
+.header {
+  display: flex;
+}
+
+.outer-overlay {
+  width: 80%;
+  margin: 0 10%;
+}
+
+.overlay {
+  height: 100vh;
+  width: 100%;
+  background: #ff4655 url(../src/assets/background-sprite.png) no-repeat;
+}
+
+.main-container {
+  margin: 0px 10%;
+  padding-top: 20px;
+  height: 300px;
+  width: 80%;
+}
+
+.search {
+  display: flex;
+  margin: 15px 0;
+}
+
+#head {
+  margin: 0;
+  width: 85%;
+  font-size: 50px;
+  font-family: "Valorant";
+  color: black;
+}
+
+#head2 {
+  text-align: end;
+  color: #ff4655;
+  margin: 0;
+}
+
+#sub {
+  text-align: center;
+  color: lightgrey;
+  padding: 5px 0;
+  width: 15%;
+  margin: 0;
+}
+
+#search-drop {
+  width: 15%;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: poppins;
+  border: none;
+}
+
+#search-bar {
+  padding: 10px;
+  border-radius: 5px;
+  font-family: poppins;
+  height: 30px;
+  width: 96%;
+  border: none;
+}
+
+#input-form {
+  text-align: center;
+  width: 85%;
+}
+
+#display-icon {
+  width: 80%;
+}
+
+#display-icon img {
+  border: 2px solid white;
+  height: 150px;
+}
+
+.agent-info {
+  padding: 2% 5% 0;
+  color: white;
+}
+
+.agent-looks {
+  display: flex;
+}
+
+#agent-name {
+  font-size: 50px;
+  margin: 0px;
+}
+
+.info-item {
+  padding: 10px;
+  background: rgb(49, 49, 49);
+}
+
+.sub-heads {
+  font-size: 25px;
+}
+
+.info-item img {
+  width: 20px;
+}
+
+.search-result {
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #00000000;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
