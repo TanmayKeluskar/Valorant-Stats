@@ -43,37 +43,39 @@ export default function MainUi() {
 
     // search type to be passed in the api url
     const [searchType, setSearchType] = useState("agents");
+    const [searchName, setSearchName] = useState("Agent Stats");
 
     // object to use to get value for the url
     const [objectName, setObjectName] = useState(agentNames);
 
+    // object to use to get value for the url
     const [searchValue, setSearchValue] = useState("raze");
-    const [agentCard, setAgentCard] = useState([""]);
+    const [resultCard, setResultCard] = useState([""]);
     const getAttribute = useRef(null);
 
 
 
-    async function getAgent(url) {
+    async function getResult(url) {
         const result = await fetch(url);
         const data = await result.json();
         console.log([data]);
-        return setAgentCard([data]);
+        return setResultCard([data]);
     }
 
-    const getAPIURL = (searchValue) => {
+    const generateApiUrl = (searchValue) => {
         let urlCreated = "https://valorant-api.com/v1/" + searchType + "/" + objectName[searchValue.toLowerCase()]
         return urlCreated
     }
 
     useEffect(() => {
         if (objectName[searchValue.toLowerCase()] != undefined) {
-            getAgent(getAPIURL(searchValue));
+            getResult(generateApiUrl(searchValue));
         }
     }, [searchValue]);
 
-    const handleSearch = (e) => {
-
+    const handleSearch = () => {
         setSearchType(getAttribute.current.value);
+        setSearchName(getAttribute.current.selectedOptions[0].innerText + " Stats");
         switch (getAttribute.current.value) {
             case "agents":
                 setObjectName(agentNames);
@@ -84,9 +86,6 @@ export default function MainUi() {
             default:
                 setObjectName(agentNames);
         }
-
-        // agentURL = "https://valorant-api.com/v1/" + searchType + "/" + objectName[searchValue.charAt(0).toUpperCase() + searchValue.slice(1)];
-        // setObjectName(getAttribute.current.selectedOptions[0].getAttribute('data-obj'));
         // console.log(getAttribute.current.selectedOptions[0].getAttribute('data-obj'));
     }
 
@@ -96,13 +95,13 @@ export default function MainUi() {
                 <div className="outer-overlay">
                     <div className="header">
                         <h1 id="head">vAlorant</h1>
-                        <h2 id="head2">Agent Stats</h2>
+                        <h2 id="head2">{searchName}</h2>
                     </div>
                     <div className="overlay">
                         <div className="main-container">
                             <div className="search">
                                 <select name="Search" id="search-drop" ref={getAttribute} onChange={(e) => { handleSearch(e) }}>
-                                    <option value="agents" selected>Agents</option>
+                                    <option value="agents" selected>Agent</option>
                                     <option value="weapons" >Weapon</option>
                                     <option value="mercedes">Mercedes</option>
                                     <option value="audi">Audi</option>
@@ -111,8 +110,11 @@ export default function MainUi() {
                                     <input id="search-bar" type="text" placeholder="Name of the Agent" onChange={(e) => { setSearchValue(e.target.value); }} value={searchValue} />
                                 </div>
                             </div>
-                            <RenderCard card={agentCard[0]} />
+                            <RenderCard card={resultCard[0]} />
                         </div>
+                    </div>
+                    <div className="footer">
+                        <h4 id="footer-text">Copyright Disclaimer under section 107 of the Copyright Act 1976, allowance is made for “fair use” for purposes such as criticism, comment, news reporting, teaching, scholarship, education and research.</h4>
                     </div>
                 </div>
             </div>
