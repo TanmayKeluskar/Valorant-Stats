@@ -21,9 +21,10 @@ code {
 
 .container {
   margin: 0;
-  padding: 40px 0;
+  height: 100vh;
   width: 100%;
   background: url(../src/assets/maps.jpg) no-repeat;
+  backdrop-filter: blur(5px);
   background-size: cover;
   background-attachment: fixed;
   font-family: poppins;
@@ -36,18 +37,18 @@ code {
 .outer-overlay {
   width: 80%;
   margin: 0 10%;
+  padding-top: 50px;
 }
 
 .overlay {
-  height: 100vh;
   width: 100%;
+  border-radius: 25px;
   background: #ff4655 url(../src/assets/background-sprite.png) no-repeat;
 }
 
 .main-container {
   margin: 0px 10%;
-  padding-top: 20px;
-  height: 300px;
+  padding: 20px 0 40px;
   width: 80%;
 }
 
@@ -101,7 +102,7 @@ code {
 }
 
 #display-icon {
-  width: 80%;
+  width: 70%;
 }
 
 #display-icon img {
@@ -110,7 +111,7 @@ code {
 }
 
 .agent-info {
-  padding: 2% 5% 0;
+  padding: 2% 0;
   color: white;
 }
 
@@ -119,6 +120,8 @@ code {
 }
 
 #agent-name {
+  width: 30%;
+  text-align: right;
   font-size: 50px;
   margin: 0px;
 }
@@ -137,7 +140,6 @@ code {
 }
 
 .search-result {
-  height: 80vh;
   overflow-y: scroll;
 }
 
