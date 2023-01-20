@@ -34,7 +34,6 @@ code {
   min-height: 100vh;
   width: 100%;
   background: url(../src/assets/background.jpg) no-repeat;
-  backdrop-filter: blur(5px);
   background-size: cover;
   background-attachment: fixed;
   font-family: poppins;
@@ -58,10 +57,11 @@ code {
 
 .main-container {
   font-family: "dinNextLight";
-  font-size: 17px;
+  font-size: 15px;
   margin: 0px 10%;
   padding: 20px 0 40px;
   width: 80%;
+  height: 650px;
 }
 
 .search {
@@ -74,7 +74,7 @@ code {
   width: 75%;
   font-size: 50px;
   font-family: "Valorant";
-  color: black;
+  color: rgb(49, 49, 49);
 }
 
 #head2 {
@@ -117,54 +117,6 @@ code {
 #input-form {
   text-align: center;
   width: 80%;
-}
-
-#display-icon {
-  font-family: "TungstenBold";
-  font-size: 40px;
-  width: 70%;
-}
-
-#display-icon p {
-  margin: 5px 0;
-}
-
-#display-icon img {
-  border: 2px solid white;
-  height: 150px;
-}
-
-.agent-info {
-  padding: 2% 0;
-  color: white;
-}
-
-.agent-looks {
-  display: flex;
-}
-
-#agent-name {
-  font-family: "TungstenBold";
-  width: 30%;
-  text-align: right;
-  font-size: 80px;
-  margin: 0px;
-}
-
-.info-items {
-  overflow-y: scroll;
-  height: 300px;
-  padding: 10px;
-  background: rgb(49, 49, 49);
-}
-
-.sub-heads {
-  font-family: "TungstenBold";
-  font-size: 25px;
-}
-
-.info-items img {
-  width: 20px;
 }
 
 .search-result {
