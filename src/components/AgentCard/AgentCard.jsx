@@ -1,7 +1,7 @@
 import React from 'react'
-import './RenderCard.css'
+import './AgentCard.css'
 
-export default function RenderCard(props) {
+export default function AgentCard(props) {
     const displayData = props.card.data
     return (
         <div className="search-result">
@@ -45,8 +45,8 @@ export default function RenderCard(props) {
                             <p class="sub-heads">Voice</p>
                             {displayData.voiceLine.mediaList != null ?
                                 <div class="audioStripe">
-                                    <audio controls controlslist="nodownload noplaybackrate" src={displayData.voiceLine.mediaList[0].wave}>Play</audio>
-                                </div> : <p>No Role</p>
+                                    <audio controls controlsList="nodownload noplaybackrate" src={displayData.voiceLine.mediaList[0].wave}>Play</audio>
+                                </div> : <p>No Voice</p>
                             }
                         </div>
                     </div>

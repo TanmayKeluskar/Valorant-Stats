@@ -1,8 +1,8 @@
 import React from 'react'
-import { useState, useEffect, useRef } from 'react';
-import RenderCard from './RenderCard/RenderCard';
+import { useState, useRef } from 'react';
+import Search from './components/Search/Search';
 
-export default function MainUi() {
+export default function MainComponent() {
     let agentNames = {
         "breach": "5f8d3a7f-467b-97f3-062c-13acf203c006",
         "raze": "f94c3b30-42be-e959-889c-5aa313dba261",
@@ -45,40 +45,37 @@ export default function MainUi() {
 
     // search type to be passed in the api url
     const [searchType, setSearchType] = useState("agents");
-    const [searchName, setSearchName] = useState("Agent Stats");
+    const [searchName, setSearchName] = useState("Agent");
 
-    // object to use to get value for the url
+    
+
+    // state object to use to get value for the url
     const [objectName, setObjectName] = useState(agentNames);
 
-    // object to use to get value for the url
-    const [searchValue, setSearchValue] = useState("raze");
+    // state array to store the result array
     const [resultCard, setResultCard] = useState([""]);
-    const getAttribute = useRef(null);
+
+    // ref attribute to get data of the selected option
+    const getSelected = useRef(null);
 
 
-
-    async function getResult(url) {
-        const result = await fetch(url);
-        const data = await result.json();
-        console.log([data]);
-        return setResultCard([data]);
-    }
-
-    const generateApiUrl = (searchValue) => {
+    async function getResult(searchValue) {
         let urlCreated = "https://valorant-api.com/v1/" + searchType + "/" + objectName[searchValue.toLowerCase()]
-        return urlCreated
+        const result = await fetch(urlCreated)
+            .then(
+                (response) => response.json())
+            .catch(
+                (error) => console.log(error));
+        /* const data = await fetch(url);
+        const result = await data.json(); */
+        console.log([result]);
+        return setResultCard([result]);
     }
-
-    useEffect(() => {
-        if (objectName[searchValue.toLowerCase()] != undefined) {
-            getResult(generateApiUrl(searchValue));
-        }
-    }, [searchValue]);
 
     const handleSearch = () => {
-        setSearchType(getAttribute.current.value);
-        setSearchName(getAttribute.current.selectedOptions[0].innerText + " Stats");
-        switch (getAttribute.current.value) {
+        setSearchType(getSelected.current.value);
+        setSearchName(getSelected.current.selectedOptions[0].innerText);
+        switch (getSelected.current.value) {
             case "agents":
                 setObjectName(agentNames);
                 break;
@@ -88,34 +85,30 @@ export default function MainUi() {
             default:
                 setObjectName(agentNames);
         }
-        // console.log(getAttribute.current.selectedOptions[0].getAttribute('data-obj'));
+        // console.log(getSelected.current.selectedOptions[0].getSelected('data-obj'));
+    }
+
+    const props = {
+        handleSearch: handleSearch,
+        getResult: getResult,
+        objectName: objectName,
+        searchType: searchType,
+        searchName: searchName,
+        resultCard: resultCard
     }
 
     return (
-        <div className="App">
-            <div className="container">
-                <div className="outer-overlay">
-                    <div className="header">
-                        <h1 id="head">vAlorant</h1>
-                        <h2 id="head2">{searchName}</h2>
-                    </div>
-                    <div className="overlay">
-                        <div className="main-container">
-                            <div className="search">
-                                <select name="Search" id="search-drop" ref={getAttribute} onChange={(e) => { handleSearch(e) }}>
-                                    <option value="agents" selected>Agent</option>
-                                    <option value="weapons" >Weapon</option>
-                                </select>
-                                <div id="input-form">
-                                    <input id="search-bar" type="text" placeholder="Name of the Agent" onChange={(e) => { setSearchValue(e.target.value); }} value={searchValue} />
-                                </div>
-                            </div>
-                            <RenderCard card={resultCard[0]} />
-                        </div>
-                    </div>
-                    <div className="footer">
-                        <h4 id="footer-text">Copyright Disclaimer under section 107 of the Copyright Act 1976, allowance is made for “fair use” for purposes such as criticism, comment, news reporting, teaching, scholarship, education and research.</h4>
-                    </div>
+        <div className="container">
+            <div className="outer-overlay">
+                <div className="header">
+                    <h1 id="head">vAlorant</h1>
+                    <h2 id="head2">{searchName} Stats</h2>
+                </div>
+                <div className="overlay">
+                    <Search {...props} ref={getSelected} />
+                </div>
+                <div className="footer">
+                    <h4 id="footer-text">Copyright Disclaimer under section 107 of the Copyright Act 1976, allowance is made for “fair use” for purposes such as criticism, comment, news reporting, teaching, scholarship, education and research.</h4>
                 </div>
             </div>
         </div>

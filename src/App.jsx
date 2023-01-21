@@ -1,9 +1,11 @@
 import React from 'react';
-import MainUi from './components/MainUi';
+import MainUi from './MainComponent';
 
 function App() {
   return (
-    <MainUi />
+    <div className="App">
+      <MainUi />
+    </div>
   )
 }
 
