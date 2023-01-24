@@ -1,22 +1,9 @@
-import React, { useRef, useState, useEffect, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import AgentCard from '../AgentCard/AgentCard';
 import WeaponCard from '../WeaponCard/WeaponCard';
-import ErrorScreen from '../ErrorScreen/ErrorScreen';
+import MultipurposeScreen from '../MultipurposeScreen/MultipurposeScreen';
 
 const Search = forwardRef((props, ref) => {
-
-    const getSearch = useRef(null);
-
-    const [firstLoad, setFirstLoad] = useState(true);
-
-    // state to use to get value for the url
-    const [searchValue, setSearchValue] = useState("raze");
-
-    useEffect(() => {
-        if (props.objectName[searchValue.toLowerCase()] != undefined) {
-            props.getResult(searchValue);
-        }
-    }, [searchValue]);
 
     return (
         <div className="main-container">
@@ -28,24 +15,30 @@ const Search = forwardRef((props, ref) => {
                     <option value="weapons" >Weapon</option>
                 </select>
                 <div id="input-form">
-                    <input id="search-bar" type="text" ref={getSearch} placeholder={"Search the " + props.searchName + " here"} onChange={(e) => {
-                        setSearchValue(e.target.value);
+                    <input id="search-bar" type="text" placeholder={"Search the " + props.searchName + " here"} onChange={(e) => {
+                        props.getSearchValue(e.target.value);
                     }} />
                 </div>
             </div>
             {
                 (() => {
-                    if (firstLoad == ) {
-                        switch (props.searchType) {
-                            case "agents":
-                                setFirstLoad(false);
-                                return <AgentCard card={props.resultCard[0]} />
-                            // return <ErrorScreen />
-                            case "weapons":
-                                return <WeaponCard card={props.resultCard[0]} />
-                            default:
-                                return <ErrorScreen />
+                    if (props.searchValue !== "") {
+                        if (props.resultCard[0].length != 0) {
+                            if (props.resultCard[0] == "in process") {
+                                return <MultipurposeScreen screen="loading" type={props.searchName} />
+                            } else {
+                                switch (props.searchType) {
+                                    case "agents":
+                                        return <AgentCard card={props.resultCard[0]} />
+                                    case "weapons":
+                                        return <WeaponCard card={props.resultCard[0]} />
+                                }
+                            }
+                        } else {
+                            return <MultipurposeScreen screen="error" />
                         }
+                    } else {
+                        return <MultipurposeScreen type={props.searchName} />
                     }
                 })()
             }

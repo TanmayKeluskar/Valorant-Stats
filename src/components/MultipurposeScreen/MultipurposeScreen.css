@@ -1,0 +1,43 @@
+.message {
+    font-family: "TungstenBold";
+    letter-spacing: 1px;
+    font-size: 30px;
+    height: 575px;
+    background: rgb(49, 49, 49);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-div {
+    text-align: center;
+}
+
+.inner-div img {
+    height: 180px;
+}
+
+.loader {
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+}
+
+.loader span {
+    width: 120px;
+    height: 120px;
+    border: 10px solid;
+    border-radius: 50%;
+    border-color: transparent #ff4655;
+    animation: cssload-spin 690ms infinite linear;
+
+
+}
+
+@keyframes cssload-spin {
+    100% {
+        transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

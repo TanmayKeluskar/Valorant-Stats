@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Search from './components/Search/Search';
 
 export default function MainComponent() {
@@ -47,13 +47,14 @@ export default function MainComponent() {
     const [searchType, setSearchType] = useState("agents");
     const [searchName, setSearchName] = useState("Agent");
 
-    
+    // state to use to get value for the url
+    const [searchValue, setSearchValue] = useState("raze");
 
     // state object to use to get value for the url
     const [objectName, setObjectName] = useState(agentNames);
 
     // state array to store the result array
-    const [resultCard, setResultCard] = useState([""]);
+    const [resultCard, setResultCard] = useState([{}]);
 
     // ref attribute to get data of the selected option
     const getSelected = useRef(null);
@@ -63,16 +64,27 @@ export default function MainComponent() {
         let urlCreated = "https://valorant-api.com/v1/" + searchType + "/" + objectName[searchValue.toLowerCase()]
         const result = await fetch(urlCreated)
             .then(
-                (response) => response.json())
+                (response) => {
+                    if (response.status === 200) {
+                        console.log("Response: ", [response]);
+                        return response.json();
+                    } else throw new Error(response.status);
+                }
+            )
             .catch(
-                (error) => console.log(error));
+                (error) => {
+                    console.log("Error: ", error)
+                    return "";
+                }
+            );
+        setResultCard([result]);
+
         /* const data = await fetch(url);
         const result = await data.json(); */
-        console.log([result]);
-        return setResultCard([result]);
     }
 
     const handleSearch = () => {
+        setSearchValue("");
         setSearchType(getSelected.current.value);
         setSearchName(getSelected.current.selectedOptions[0].innerText);
         switch (getSelected.current.value) {
@@ -88,12 +100,28 @@ export default function MainComponent() {
         // console.log(getSelected.current.selectedOptions[0].getSelected('data-obj'));
     }
 
+    const getSearchValue = (searchVal) => {
+        setSearchValue(searchVal);
+    }
+
+    useEffect(() => {
+        debugger
+        setResultCard(["in process"]);
+        if (objectName[searchValue.toLowerCase()] != undefined) {
+            getResult(searchValue);
+        } else {
+            setSearchValue("");
+
+        }
+    }, [searchValue]);
+
+
     const props = {
         handleSearch: handleSearch,
-        getResult: getResult,
-        objectName: objectName,
+        getSearchValue: getSearchValue,
         searchType: searchType,
         searchName: searchName,
+        searchValue: searchValue,
         resultCard: resultCard
     }
 
