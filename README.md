@@ -9,7 +9,7 @@ This command installs a package and any packages that it depends on. If the pack
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/120456100/207691579-4e36f72d-b3e6-4b25-a530-4d456be47cf0.png)
+![image](https://user-images.githubusercontent.com/120456100/214262170-ab22bd14-9401-45a5-8088-c079cdba2ee5.png)
 
 ## Available Scripts
 
