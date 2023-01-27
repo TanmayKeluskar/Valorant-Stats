@@ -105,7 +105,6 @@ export default function MainComponent() {
     }
 
     useEffect(() => {
-        debugger
         setResultCard(["in process"]);
         if (objectName[searchValue.toLowerCase()] != undefined) {
             getResult(searchValue);
