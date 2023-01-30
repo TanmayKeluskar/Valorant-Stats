@@ -27,7 +27,8 @@
 
 .display-data .weapon-pic {
     padding: 50px 0 0 0;
-    width: 335px;
+    max-width: 335px;
+    max-height: 170px;
 }
 
 .display-data .name {
@@ -99,10 +100,7 @@
 }
 
 .display-weapon .display-item{
-    width: 250px;
-}
-
-.display-weapon .display-item p {
+    width: 275px;
     text-align: center;
 }
 
