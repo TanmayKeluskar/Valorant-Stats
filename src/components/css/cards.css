@@ -1,0 +1,111 @@
+.info {
+    display: flex;
+    padding: 2% 0;
+    color: white;
+}
+
+.looks {
+    width: 30%;
+    color: rgb(49, 49, 49);
+}
+
+
+.display-data {
+    font-family: "TungstenBold";
+    font-size: 40px;
+    height: 500px;
+    padding: 0px 20px 0 0;
+}
+
+.display-data p {
+    margin: 5px 0;
+}
+
+.display-data .agent-pic {
+    height: 200px;
+}
+
+.display-data .weapon-pic {
+    padding: 50px 0 0 0;
+    width: 335px;
+}
+
+.display-data .name {
+    font-size: 80px;
+    margin: 0px;
+}
+
+.display-data .description {
+    color: rgb(49, 49, 49);
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.display-data .weapon-description {
+    font-weight: 900;
+}
+
+.info-items {
+    overflow-y: scroll;
+    width: 70%;
+    height: 500px;
+    padding: 10px;
+    background: rgb(49, 49, 49);
+    border-radius: 0 10px 10px 0;
+}
+
+.info-items img {
+    width: 20px;
+}
+
+.info-items .weapon-skin {
+    width: 200px;
+}
+
+.sub-heads {
+    font-family: "TungstenBold";
+    font-size: 35px;
+    margin: 0;
+}
+
+.display-item {
+    margin: 30px 0;
+}
+
+.display-item img {
+    margin-right: 10px;
+}
+
+.display-item span {
+    font-size: 22px;
+}
+
+.display-voice {
+    display: flex;
+}
+
+.display-voice .sub-heads {
+    width: 20%;
+}
+
+.display-voice .audioStripe {
+    text-align: right;
+    width: 80%;
+}
+
+.display-weapon {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.display-weapon .display-item{
+    width: 250px;
+}
+
+.display-weapon .display-item p {
+    text-align: center;
+}
+
+.display-weapon .display-item span {
+    font-size: 16px;
+}

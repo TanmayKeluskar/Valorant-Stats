@@ -55,20 +55,6 @@ code {
   background: #ff4655 url(../src/assets/background-sprite.png) no-repeat;
 }
 
-.main-container {
-  font-family: "dinNextLight";
-  font-size: 15px;
-  margin: 0px 10%;
-  padding: 20px 0 40px;
-  width: 80%;
-  height: 650px;
-}
-
-.search {
-  display: flex;
-  margin: 15px 0;
-}
-
 #head {
   margin: 0;
   width: 75%;
@@ -84,45 +70,6 @@ code {
   margin: 0;
 }
 
-#sub {
-  text-align: center;
-  color: lightgrey;
-  padding: 5px 0;
-  width: 15%;
-  margin: 0;
-}
-
-#search-drop {
-  background-color: rgb(49, 49, 49);
-  color: white;
-  outline: none;
-  width: 20%;
-  padding: 10px;
-  border-radius: 5px;
-  font-family: poppins;
-  border: none;
-}
-
-#search-bar {
-  background-color: rgb(49, 49, 49);
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  font-family: poppins;
-  height: 30px;
-  width: 96%;
-  border: none;
-}
-
-#input-form {
-  text-align: center;
-  width: 80%;
-}
-
-.search-result {
-  overflow-y: scroll;
-}
-
 #footer-text {
   font-size: 10px;
   color: white;
@@ -130,25 +77,19 @@ code {
   margin: 10px 0 0 0;
 }
 
-/* width */
+/* scrollbar */
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
-
 ::-webkit-scrollbar-track {
   background: #00000000;
 }
 
-/* Handle */
-
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
-
-/* Handle on hover */
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
