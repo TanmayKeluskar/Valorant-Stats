@@ -66,7 +66,6 @@ export default function MainComponent() {
             .then(
                 (response) => {
                     if (response.status === 200) {
-                        console.log("Response: ", [response]);
                         return response.json();
                     } else throw new Error(response.status);
                 }
@@ -77,6 +76,7 @@ export default function MainComponent() {
                     return "";
                 }
             );
+        console.log("Response: ", result);
         setResultCard([result]);
 
         /* const data = await fetch(url);
@@ -105,7 +105,6 @@ export default function MainComponent() {
     }
 
     useEffect(() => {
-        debugger
         setResultCard(["in process"]);
         if (objectName[searchValue.toLowerCase()] != undefined) {
             getResult(searchValue);
@@ -117,6 +116,7 @@ export default function MainComponent() {
 
 
     const props = {
+        objectName: objectName,
         handleSearch: handleSearch,
         getSearchValue: getSearchValue,
         searchType: searchType,

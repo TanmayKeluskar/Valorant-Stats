@@ -1,9 +1,12 @@
-import React, { forwardRef } from 'react'
+import React, { useRef, forwardRef } from 'react'
 import AgentCard from '../AgentCard/AgentCard';
 import WeaponCard from '../WeaponCard/WeaponCard';
 import MultipurposeScreen from '../MultipurposeScreen/MultipurposeScreen';
+import './Search.css';
 
 const Search = forwardRef((props, ref) => {
+
+    const getSearchVal = useRef();
 
     return (
         <div className="main-container">
@@ -14,10 +17,21 @@ const Search = forwardRef((props, ref) => {
                     <option value="agents" selected>Agent</option>
                     <option value="weapons" >Weapon</option>
                 </select>
+                <input id="search-bar" type="text" ref={getSearchVal} placeholder={"Search the " + props.searchName + " here"} onChange={(e) => {
+                    props.getSearchValue(e.target.value);
+                }} />
                 <div id="input-form">
-                    <input id="search-bar" type="text" placeholder={"Search the " + props.searchName + " here"} onChange={(e) => {
-                        props.getSearchValue(e.target.value);
-                    }} />
+                    {/* <ul className='search-hints'>
+                        <li>Hi</li>
+                    </ul> */}
+                    {/* {getSearchVal.current.value.length > 1 && props.objectName.length > 0 && (
+                        <ul className="list">
+                            {Object.keys(props.objectName).map((item) => (
+                                <li onClick={() => this.onClickItem(item)}>{item.name}</li>
+                            ))}
+                        </ul>
+                    )} */}
+
                 </div>
             </div>
             {

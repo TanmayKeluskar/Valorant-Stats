@@ -1,22 +1,22 @@
 import React from 'react'
-import './AgentCard.css'
+import '../css/cards.css'
 
 export default function AgentCard(props) {
     const displayData = props.card.data
     return (
         <div className="search-result">
             {displayData ?
-                <div className="agent-info">
-                    <div className="agent-looks">
-                        <div id="display-icon">
-                            <img src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
-                            <p>{displayData.isPlayableCharacter != null ? "Playable Character" : "Non-  Playable Character"}</p>
+                <div className="info">
+                    <div className="looks">
+                        <div className="display-data">
+                            <img className='agent-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
+                            <div className="name">{displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
+                            </div>
+                            <p>{displayData.isPlayableCharacter != null ? "Playable Character" : "Non - Playable Character"}</p>
+                            <div className="description">
+                                {displayData.description != null ? <p> {displayData.description}</p> : <p>No Roles Found</p>}
+                            </div>
                         </div>
-                        <div id="agent-name">{displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
-                        </div>
-                    </div>
-                    <div className="agent-description">
-                        {displayData.description != null ? <p> {displayData.description}</p> : <p>No Role</p>}
                     </div>
                     <div className="info-items">
                         <p class="sub-heads">ROLES</p>
@@ -24,29 +24,30 @@ export default function AgentCard(props) {
                         {displayData.role != null ?
                             <div class="display-item"><img src={displayData.role.displayIcon} /><span>{displayData.role.displayName.toUpperCase()}</span>
                                 <p>{displayData.role.description}</p>
-                            </div> : <p>No Role</p>
+                            </div> : <p>No Roles Found</p>
                         }
-                        <p class="sub-heads">Abilities</p>
+                        <p class="sub-heads">ABILITIES</p>
                         <hr />
                         {displayData.abilities != null ?
-                            displayData.abilities.map(ability => {
+                            displayData.abilities.map((ability) => {
                                 return (
                                     <>
-                                        <div class="display-item"><img src={ability.displayIcon} />
-                                            <span>{ability.displayName.toUpperCase()}</span>
-                                            <p>{ability.description}</p>
-                                            <p>- SLOT: {ability.slot}</p>
+                                        <div class="display-item" key={ability.displayName} >
+                                            {ability.displayIcon != null ? <img src={ability.displayIcon} /> : <p>Not Found</p>}
+                                            {ability.displayName != null ? <span>{ability.displayName.toUpperCase()}</span> : <p>Not Found</p>}
+                                            {ability.description != null ? <p>{ability.description}</p> : <p>Not Found</p>}
+                                            {ability.slot != null ? <p>- SLOT: {ability.slot}</p> : <p>Not Found</p>}
                                         </div>
                                     </>
                                 )
-                            }) : <p>No Abilities</p>
+                            }) : <p>No Abilities Found</p>
                         }
                         <div className="display-voice">
-                            <p class="sub-heads">Voice</p>
+                            <p class="sub-heads">VOICE</p>
                             {displayData.voiceLine.mediaList != null ?
                                 <div class="audioStripe">
                                     <audio controls controlsList="nodownload noplaybackrate" src={displayData.voiceLine.mediaList[0].wave}>Play</audio>
-                                </div> : <p>No Voice</p>
+                                </div> : <p>No Voice Found</p>
                             }
                         </div>
                     </div>

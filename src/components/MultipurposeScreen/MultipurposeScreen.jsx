@@ -10,7 +10,7 @@ function MultipurposeScreen(props) {
                 (() => {
                     switch (props.screen) {
                         case "loading":
-                            return <div className="message">
+                            return <div className="message loader-message">
                                 <div className='inner-div'>
                                     <div class="loader">
                                         <span></span>

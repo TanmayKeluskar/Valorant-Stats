@@ -1,54 +1,85 @@
 import React from 'react'
-import './WeaponCard.css'
+import '../css/cards.css'
 
 export default function WeaponCard(props) {
     const displayData = props.card.data
+
+    const skinArray = /standard|random|luxe knife/;
+
     return (
         <div className="search-result">
             {displayData ?
-                <div className="agent-info">
-                    <div className="agent-looks">
-                        <div id="display-icon">
-                            <img src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
-                            <p>{displayData.isPlayableCharacter != null ? "Playable Character" : "Non-  Playable Character"}</p>
+                <div className="info">
+                    <div className="looks">
+                        <div className="display-data">
+                            <img className='weapon-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
+                            <div className="name">{displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
+                            </div>
+                            {displayData.shopData != null ?
+                                displayData.shopData.categoryText != null ? <p>Category - {displayData.shopData.categoryText}</p> : <p>No Category</p> : ""
+                            }
+                            <div className="description weapon-description">
+                                {displayData.shopData != null ? <b>{displayData.shopData.cost != null ? <p>Cost - {displayData.shopData.cost} CREDS</p> : <p>0</p>}</b> : ""
+                                }
+                                {displayData.weaponStats != null ? <>
+                                    {displayData.weaponStats.fireRate != null ? <p>Fire Rate - {displayData.weaponStats.fireRate}</p> : ""}
+                                    {displayData.weaponStats.magazineSize != null ? <p>Magazine Size - {displayData.weaponStats.magazineSize}</p> : ""}
+                                    {displayData.weaponStats.reloadTimeSeconds != null ? <p>Reload Speed - {displayData.weaponStats.reloadTimeSeconds} secs</p> : ""}
+                                    {displayData.weaponStats.firstBulletAccuracy != null ? <p>Accuracy - {displayData.weaponStats.firstBulletAccuracy} on first bullet</p> : ""}
+                                </> : ""
+                                }
+                            </div>
                         </div>
-                        <div id="agent-name">{displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
-                        </div>
-                    </div>
-                    <div className="agent-description">
-                        {displayData.category != null ? <p> {displayData.category}</p> : <p>No Category</p>}
                     </div>
                     <div className="info-items">
-                        {/* <p class="sub-heads">ROLES</p>
-                        <hr />
-                        {displayData.role != null ?
-                            <div class="display-item"><img src={displayData.role.displayIcon} /><span>{displayData.role.displayName.toUpperCase()}</span>
-                                <p>{displayData.role.description}</p>
-                            </div> : <p>No Role</p>
-                        }
-                        <p class="sub-heads">Abilities</p>
-                        <hr />
-                        {displayData.abilities != null ?
-                            displayData.abilities.map(ability => {
-                                return (
-                                    <>
-                                        <div class="display-item"><img src={ability.displayIcon} />
-                                            <span>{ability.displayName.toUpperCase()}</span>
-                                            <p>{ability.description}</p>
-                                            <p>- SLOT: {ability.slot}</p>
-                                        </div>
-                                    </>
-                                )
-                            }) : <p>No Abilities</p>
-                        }
-                        <div className="display-voice">
-                            <p class="sub-heads">Voice</p>
-                            {displayData.voiceLine.mediaList != null ?
-                                <div class="audioStripe">
-                                    <audio controls controlslist="nodownload noplaybackrate" src={displayData.voiceLine.mediaList[0].wave}>Play</audio>
-                                </div> : <p>No Voice</p>
+                        {displayData.weaponStats != null ? <>
+                            <p class="sub-heads">MORE WEAPON STATS</p>
+                            <hr />
+                            <div class="display-item">
+                                {displayData.weaponStats.equipTimeSeconds != null ? <p>Switching Time - {displayData.weaponStats.equipTimeSeconds} secs</p> : ""}
+                                {displayData.weaponStats.runSpeedMultiplier != null ? <p>Run Speed - {displayData.weaponStats.runSpeedMultiplier}</p> : ""}
+                                {displayData.weaponStats.wallPenetration != null ? <p>Wall Penetration - {displayData.weaponStats.wallPenetration.split("::")[1]}</p> : ""}
+                            </div>
+                            <p class="sub-heads">After ADS (Aim Down Sight)</p>
+                            <hr />
+                            {displayData.weaponStats.adsStats != null ?
+                                <div class="display-item">
+                                    {displayData.weaponStats.adsStats.zoomMultiplier != null ? <p>Zoom - {displayData.weaponStats.adsStats.zoomMultiplier} secs</p> : ""}
+                                    {displayData.weaponStats.adsStats.fireRate != null ? <p>Fire Rate - {Math.round(displayData.weaponStats.adsStats.fireRate)}</p> : ""}
+                                    {displayData.weaponStats.adsStats.firstBulletAccuracy != null ? <p>Accuracy - {displayData.weaponStats.adsStats.firstBulletAccuracy} on first bullet</p> : ""}
+                                    {displayData.weaponStats.adsStats.runSpeedMultiplier != null ? <p>Run Speed - {displayData.weaponStats.adsStats.runSpeedMultiplier}</p> : ""}
+                                </div> : <p>No Weapon Stats on ADS Found</p>
                             }
-                        </div> */}
+                            <p class="sub-heads">DAMAGE RANGES</p>
+                            <hr />
+                            {displayData.weaponStats.damageRanges != [] ?
+                                displayData.weaponStats.damageRanges.map(parameter => {
+                                    return (
+                                        <div class="display-item">
+                                            {parameter.rangeStartMeters != null && parameter.rangeEndMeters != null ? <span>Range from {parameter.rangeStartMeters} to {parameter.rangeEndMeters}</span> : ""}
+                                            {parameter.headDamage != null ? <p>- Head Damage: {Math.round(parameter.headDamage)}</p> : ""}
+                                            {parameter.bodyDamage != null ? <p>- Body Damage: {Math.round(parameter.bodyDamage)}</p> : ""}
+                                            {parameter.legDamage != null ? <p>- Leg Damage: {Math.round(parameter.legDamage)}</p> : ""}
+                                        </div>
+                                    )
+                                }) : <p>No Damage Ranges Found</p>
+                            }</> : ""
+                        }
+                        <p class="sub-heads">SKINS</p>
+                        <hr />
+                        <div className="display-weapon">
+                            {displayData.skins != [] ?
+                                displayData.skins.map(skin => {
+                                    return (
+                                        skin.displayIcon != null && skin.displayName != null && !skinArray.test(skin.displayName.toLowerCase()) ?
+                                            <div class="display-item">
+                                                <img className='weapon-skin' src={skin.displayIcon} />
+                                                <p><span>{skin.displayName}</span></p>
+                                            </div> : ""
+                                    )
+                                }) : <p>No Skins Found</p>
+                            }
+                        </div>
                     </div>
                 </div>
                 : ""}
