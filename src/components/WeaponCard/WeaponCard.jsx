@@ -12,7 +12,7 @@ export default function WeaponCard(props) {
                 <div className="info">
                     <div className="looks">
                         <div className="display-data">
-                            <img className='weapon-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
+                            <img alt="weapon-pic" className='weapon-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
                             <div className="name">{displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
                             </div>
                             {displayData.shopData != null ?
@@ -33,29 +33,29 @@ export default function WeaponCard(props) {
                     </div>
                     <div className="info-items">
                         {displayData.weaponStats != null ? <>
-                            <p class="sub-heads">MORE WEAPON STATS</p>
+                            <p className="sub-heads">MORE WEAPON STATS</p>
                             <hr />
-                            <div class="display-item">
+                            <div className="display-item">
                                 {displayData.weaponStats.equipTimeSeconds != null ? <p>Switching Time - {displayData.weaponStats.equipTimeSeconds} secs</p> : ""}
                                 {displayData.weaponStats.runSpeedMultiplier != null ? <p>Run Speed - {displayData.weaponStats.runSpeedMultiplier}</p> : ""}
                                 {displayData.weaponStats.wallPenetration != null ? <p>Wall Penetration - {displayData.weaponStats.wallPenetration.split("::")[1]}</p> : ""}
                             </div>
-                            <p class="sub-heads">After ADS (Aim Down Sight)</p>
+                            <p className="sub-heads">After ADS (Aim Down Sight)</p>
                             <hr />
                             {displayData.weaponStats.adsStats != null ?
-                                <div class="display-item">
+                                <div className="display-item">
                                     {displayData.weaponStats.adsStats.zoomMultiplier != null ? <p>Zoom - {displayData.weaponStats.adsStats.zoomMultiplier} secs</p> : ""}
                                     {displayData.weaponStats.adsStats.fireRate != null ? <p>Fire Rate - {Math.round(displayData.weaponStats.adsStats.fireRate)}</p> : ""}
                                     {displayData.weaponStats.adsStats.firstBulletAccuracy != null ? <p>Accuracy - {displayData.weaponStats.adsStats.firstBulletAccuracy} on first bullet</p> : ""}
                                     {displayData.weaponStats.adsStats.runSpeedMultiplier != null ? <p>Run Speed - {displayData.weaponStats.adsStats.runSpeedMultiplier}</p> : ""}
                                 </div> : <p>No Weapon Stats on ADS Found</p>
                             }
-                            <p class="sub-heads">DAMAGE RANGES</p>
+                            <p className="sub-heads">DAMAGE RANGES</p>
                             <hr />
-                            {displayData.weaponStats.damageRanges != [] ?
+                            {displayData.weaponStats.damageRanges !== [] ?
                                 displayData.weaponStats.damageRanges.map(parameter => {
                                     return (
-                                        <div class="display-item">
+                                        <div className="display-item" key={parameter.rangeStartMeters}>
                                             {parameter.rangeStartMeters != null && parameter.rangeEndMeters != null ? <span>Range from {parameter.rangeStartMeters} to {parameter.rangeEndMeters}</span> : ""}
                                             {parameter.headDamage != null ? <p>- Head Damage: {Math.round(parameter.headDamage)}</p> : ""}
                                             {parameter.bodyDamage != null ? <p>- Body Damage: {Math.round(parameter.bodyDamage)}</p> : ""}
@@ -65,15 +65,15 @@ export default function WeaponCard(props) {
                                 }) : <p>No Damage Ranges Found</p>
                             }</> : ""
                         }
-                        <p class="sub-heads">SKINS</p>
+                        <p className="sub-heads">SKINS</p>
                         <hr />
                         <div className="display-weapon">
-                            {displayData.skins != [] ?
+                            {displayData.skins !== [] ?
                                 displayData.skins.map(skin => {
                                     return (
                                         skin.displayIcon != null && skin.displayName != null && !skinArray.test(skin.displayName.toLowerCase()) ?
-                                            <div class="display-item">
-                                                <img className='weapon-skin' src={skin.displayIcon} />
+                                            <div className="display-item" key={skin.displayName}>
+                                                <img alt="skin-icon" className='weapon-skin' src={skin.displayIcon} />
                                                 <p><span>{skin.displayName}</span></p>
                                             </div> : ""
                                     )

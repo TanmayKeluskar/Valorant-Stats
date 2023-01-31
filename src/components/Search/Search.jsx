@@ -14,7 +14,7 @@ const Search = forwardRef((props, ref) => {
                 <select name="Search" id="search-drop" ref={ref} onChange={(e) => {
                     props.handleSearch(e)
                 }}>
-                    <option value="agents" selected>Agent</option>
+                    <option value="agents" defaultValue>Agent</option>
                     <option value="weapons" >Weapon</option>
                 </select>
                 <input id="search-bar" type="text" ref={getSearchVal} placeholder={"Search the " + props.searchName + " here"} onChange={(e) => {
@@ -37,8 +37,8 @@ const Search = forwardRef((props, ref) => {
             {
                 (() => {
                     if (props.searchValue !== "") {
-                        if (props.resultCard[0].length != 0) {
-                            if (props.resultCard[0] == "in process") {
+                        if (props.resultCard[0].length !== 0) {
+                            if (props.resultCard[0] === "in process") {
                                 return <MultipurposeScreen screen="loading" type={props.searchName} />
                             } else {
                                 switch (props.searchType) {
@@ -46,6 +46,8 @@ const Search = forwardRef((props, ref) => {
                                         return <AgentCard card={props.resultCard[0]} />
                                     case "weapons":
                                         return <WeaponCard card={props.resultCard[0]} />
+                                    default:
+                                        return <MultipurposeScreen screen="error" />
                                 }
                             }
                         } else {

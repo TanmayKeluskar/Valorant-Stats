@@ -59,30 +59,6 @@ export default function MainComponent() {
     // ref attribute to get data of the selected option
     const getSelected = useRef(null);
 
-
-    async function getResult(searchValue) {
-        let urlCreated = "https://valorant-api.com/v1/" + searchType + "/" + objectName[searchValue.toLowerCase()]
-        const result = await fetch(urlCreated)
-            .then(
-                (response) => {
-                    if (response.status === 200) {
-                        return response.json();
-                    } else throw new Error(response.status);
-                }
-            )
-            .catch(
-                (error) => {
-                    console.log("Error: ", error)
-                    return "";
-                }
-            );
-        console.log("Response: ", result);
-        setResultCard([result]);
-
-        /* const data = await fetch(url);
-        const result = await data.json(); */
-    }
-
     const handleSearch = () => {
         setSearchValue("");
         setSearchType(getSelected.current.value);
@@ -105,14 +81,38 @@ export default function MainComponent() {
     }
 
     useEffect(() => {
+        
+        async function getResult(searchValue) {
+            let urlCreated = "https://valorant-api.com/v1/" + searchType + "/" + objectName[searchValue.toLowerCase()]
+            const result = await fetch(urlCreated)
+                .then(
+                    (response) => {
+                        if (response.status === 200) {
+                            return response.json();
+                        } else throw new Error(response.status);
+                    }
+                )
+                .catch(
+                    (error) => {
+                        console.log("Error: ", error)
+                        return "";
+                    }
+                );
+            console.log("Response: ", result);
+            setResultCard([result]);
+
+            /* const data = await fetch(url);
+            const result = await data.json(); */
+        }
+
         setResultCard(["in process"]);
-        if (objectName[searchValue.toLowerCase()] != undefined) {
+        if (objectName[searchValue.toLowerCase()] !== undefined) {
             getResult(searchValue);
         } else {
             setSearchValue("");
 
         }
-    }, [searchValue]);
+    }, [searchValue, objectName, searchType]);
 
 
     const props = {
