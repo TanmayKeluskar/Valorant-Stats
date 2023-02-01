@@ -12,12 +12,20 @@ export default function WeaponCard(props) {
                 <div className="info">
                     <div className="looks">
                         <div className="display-data">
-                            <img alt="weapon-pic" className='weapon-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
-                            <div className="name">{displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
+                            <div className='img-text' >
+                                <div className='img'>
+                                    <img alt="weapon-pic" className='weapon-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
+                                </div>
+                                <div className="name">
+                                    <p className='character-name'>
+                                        {displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
+                                    </p>
+                                    <p>
+                                        {displayData.shopData != null ?
+                                            displayData.shopData.categoryText != null ? <p>Category - {displayData.shopData.categoryText}</p> : <p>No Category</p> : ""}
+                                    </p>
+                                </div>
                             </div>
-                            {displayData.shopData != null ?
-                                displayData.shopData.categoryText != null ? <p>Category - {displayData.shopData.categoryText}</p> : <p>No Category</p> : ""
-                            }
                             <div className="description weapon-description">
                                 {displayData.shopData != null ? <b>{displayData.shopData.cost != null ? <p>Cost - {displayData.shopData.cost} CREDS</p> : <p>0</p>}</b> : ""
                                 }

@@ -9,6 +9,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 @font-face {
   font-family: "Valorant";
   src: url(../src/assets/Valorant.ttf);
@@ -41,12 +49,12 @@ code {
 
 .header {
   display: flex;
+  padding-top: 50px;
 }
 
 .outer-overlay {
   width: 80%;
   margin: 0 10%;
-  padding-top: 50px;
 }
 
 .overlay {
@@ -94,3 +102,42 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* Desktops and laptops ----------- */
+@media only screen and (max-width : 1280px) {}
+
+/* iPads to Smartphone for Common Elements ----------- */
+@media only screen and (max-width : 1024px) {}
+
+/* Mini Tablet and Big Mobile */
+@media only screen and (max-width : 760px) and (orientation : portrait) {
+  .outer-overlay {
+    width: 90%;
+    margin: 0 5%;
+  }
+
+  .header {
+    display: block;
+    padding-top: 30px;
+  }
+
+  #head {
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+  }
+
+  #head2 {
+    font-size: 16px;
+    text-align: center;
+    padding: 0 15px 4px;
+    width: 100%;
+  }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width : 640px) {}

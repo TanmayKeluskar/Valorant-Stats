@@ -4,12 +4,17 @@
     margin: 0px 10%;
     padding: 20px 0 40px;
     width: 80%;
-    height: 650px;
+    height: 700px;
 }
 
 .search {
     display: flex;
+    height: 8%;
     margin: 15px 0;
+}
+
+.search-result {
+    height: 90%;
 }
 
 #search-drop {
@@ -17,7 +22,7 @@
     background-color: rgb(49, 49, 49);
     color: white;
     outline: none;
-    width: 15%;
+    width: 110px;
     padding: 10px;
     border: none;
     border-right: 1px solid #ff4655;
@@ -30,8 +35,42 @@
     color: white;
     outline: none;
     padding: 10px;
-    height: 30px;
-    width: 85%;
+    width: 100%;
     border: none;
     border-radius: 0 10px 10px 0;
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (max-width : 1280px) {}
+
+/* laptops, iPads to Smartphone for Common Elements ----------- */
+@media only screen and (max-width : 1024px) {}
+
+/* Smartphones, Mini Tablet and Big Mobile (portrait and landscape) ----------- */
+@media only screen and (max-width : 760px) {
+    .main-container {
+        margin: 0px 5%;
+        padding: 5px 0 0px;
+        width: 90%;
+        height: 80vh;
+    }
+
+    .search {
+        margin: 15px 0 0;
+    }
+
+    .search-result {
+        height: 85%;
+    }
+
+    #search-drop {
+        font-size: 11px;
+        min-width: 90px;
+        border-radius: 10px 0 0 0;
+    }
+
+    #search-bar {
+        font-size: 11px;
+        border-radius: 0 10px 0 0;
+    }
 }

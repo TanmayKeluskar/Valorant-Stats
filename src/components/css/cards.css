@@ -1,6 +1,5 @@
 .info {
     display: flex;
-    padding: 2% 0;
     color: white;
 }
 
@@ -12,13 +11,15 @@
 
 .display-data {
     font-family: "TungstenBold";
-    font-size: 40px;
-    height: 500px;
     padding: 0px 20px 0 0;
 }
 
 .display-data p {
     margin: 5px 0;
+}
+
+.display-data .img-text {
+    display: block;
 }
 
 .display-data .agent-pic {
@@ -32,14 +33,20 @@
 }
 
 .display-data .name {
-    font-size: 80px;
+    font-size: 40px;
     margin: 0px;
+}
+
+.display-data .name .character-name {
+    font-size: 80px;
 }
 
 .display-data .description {
     color: rgb(49, 49, 49);
     font-weight: 900;
-    font-size: 20px;
+    font-size: 14px;
+    font-family: 'poppins';
+    overflow-y: scroll;
 }
 
 .display-data .weapon-description {
@@ -49,7 +56,7 @@
 .info-items {
     overflow-y: scroll;
     width: 70%;
-    height: 500px;
+    height: 575px;
     padding: 10px;
     background: rgb(49, 49, 49);
     border-radius: 0 10px 10px 0;
@@ -99,7 +106,7 @@
     flex-wrap: wrap;
 }
 
-.display-weapon .display-item{
+.display-weapon .display-item {
     width: 275px;
     text-align: center;
 }
@@ -107,3 +114,98 @@
 .display-weapon .display-item span {
     font-size: 16px;
 }
+
+/* Desktops and laptops ----------- */
+@media only screen and (max-width : 1280px) {}
+
+/* iPads to Smartphone for Common Elements ----------- */
+@media only screen and (max-width : 1024px) {}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width : 760px) {
+    .looks {
+        width: 100%;
+        height: 30%;
+    }
+
+    .info {
+        display: block;
+        margin-top: 10px;
+        height: 100%;
+    }
+
+    .display-data {
+        height: 100%;
+        padding: 0;
+    }
+
+    .display-data .img-text {
+        display: flex;
+        padding: 0;
+        height: 100%;
+    }
+
+    .display-data .img {
+        width: 50%;
+        height: 100%;
+    }
+
+    .display-data .agent-pic {
+        height: 90%;
+    }
+
+    .display-data .weapon-pic {
+        padding: 30px 0 0 0;
+        max-width: 90%;
+    }
+
+    .display-data .name {
+        font-size: 25px;
+        width: 50%;
+        text-align: right;
+    }
+
+    .display-data .name .character-name {
+        font-size: 70px;
+    }
+
+    .display-data .description {
+        display: none;
+    }
+
+    .info-items {
+        overflow-y: scroll;
+        width: 100%;
+        height: 70%;
+        padding: 10px;
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width : 480px) and (orientation : portrait) {
+    .looks {
+        width: 100%;
+        height: 15%;
+    }
+
+    .display-data .weapon-pic {
+        padding: 10px 0 0 0;
+        max-width: 90%;
+    }
+
+    .display-data .name {
+        font-size: 17px;
+    }
+
+    .display-data .name .character-name {
+        font-size: 30px;
+    }
+
+    .info-items {
+        height: 85%;
+    }
+}
+
+/* X-Tra Small Devices  (portrait and landscape) ----------- */
+@media only screen and (max-width : 320px) {}

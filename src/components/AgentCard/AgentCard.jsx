@@ -9,10 +9,17 @@ export default function AgentCard(props) {
                 <div className="info">
                     <div className="looks">
                         <div className="display-data">
-                            <img alt="agent-pic" className='agent-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
-                            <div className="name">{displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
+                            <div className='img-text' >
+                                <div className='img'>
+                                    <img alt="agent-pic" className='agent-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
+                                </div>
+                                <div className="name">
+                                    <p className='character-name'>
+                                        {displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
+                                    </p>
+                                    <p>{displayData.isPlayableCharacter != null ? "Playable Character" : "Non - Playable Character"}</p>
+                                </div>
                             </div>
-                            <p>{displayData.isPlayableCharacter != null ? "Playable Character" : "Non - Playable Character"}</p>
                             <div className="description">
                                 {displayData.description != null ? <p> {displayData.description}</p> : <p>No Roles Found</p>}
                             </div>
