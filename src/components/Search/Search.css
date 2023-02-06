@@ -2,15 +2,15 @@
     font-family: "dinNextLight";
     font-size: 15px;
     margin: 0px 10%;
-    padding: 20px 0 40px;
+    padding: 20px 0;
     width: 80%;
-    height: 700px;
+    height: 100%;
 }
 
 .search {
     display: flex;
     height: 8%;
-    margin: 15px 0;
+    margin-bottom: 1%;
 }
 
 .search-result {
@@ -25,7 +25,7 @@
     width: 110px;
     padding: 10px;
     border: none;
-    border-right: 1px solid #ff4655;
+    border-right: 2px solid #ff4655;
     border-radius: 10px 0 0 10px;
 }
 
@@ -40,27 +40,18 @@
     border-radius: 0 10px 10px 0;
 }
 
-/* Desktops and laptops ----------- */
-@media only screen and (max-width : 1280px) {}
-
-/* laptops, iPads to Smartphone for Common Elements ----------- */
-@media only screen and (max-width : 1024px) {}
-
-/* Smartphones, Mini Tablet and Big Mobile (portrait and landscape) ----------- */
-@media only screen and (max-width : 760px) {
+/* Desktops and iPads, Tabs ----------- */
+@media only screen and (max-width : 1280px) {
     .main-container {
         margin: 0px 5%;
-        padding: 5px 0 0px;
         width: 90%;
-        height: 80vh;
     }
+}
 
-    .search {
-        margin: 15px 0 0;
-    }
-
-    .search-result {
-        height: 85%;
+/* Smartphones, Mini Tablet and Big Mobile (portrait and landscape) ----------- */
+@media only screen and (max-width : 900px) {
+    .main-container {
+        font-size: 14px;
     }
 
     #search-drop {

@@ -34,30 +34,32 @@ const Search = forwardRef((props, ref) => {
 
                 </div>
             </div>
-            {
-                (() => {
-                    if (props.searchValue !== "") {
-                        if (props.resultCard[0].length !== 0) {
-                            if (props.resultCard[0] === "in process") {
-                                return <MultipurposeScreen screen="loading" type={props.searchName} />
-                            } else {
-                                switch (props.searchType) {
-                                    case "agents":
-                                        return <AgentCard card={props.resultCard[0]} />
-                                    case "weapons":
-                                        return <WeaponCard card={props.resultCard[0]} />
-                                    default:
-                                        return <MultipurposeScreen screen="error" />
+            <div className="search-result">
+                {
+                    (() => {
+                        if (props.searchValue !== "") {
+                            if (props.resultCard[0].length !== 0) {
+                                if (props.resultCard[0] === "in process") {
+                                    return <MultipurposeScreen screen="loading" type={props.searchName} />
+                                } else {
+                                    switch (props.searchType) {
+                                        case "agents":
+                                            return <AgentCard card={props.resultCard[0]} />
+                                        case "weapons":
+                                            return <WeaponCard card={props.resultCard[0]} />
+                                        default:
+                                            return <MultipurposeScreen screen="error" />
+                                    }
                                 }
+                            } else {
+                                return <MultipurposeScreen screen="error" />
                             }
                         } else {
-                            return <MultipurposeScreen screen="error" />
+                            return <MultipurposeScreen type={props.searchName} />
                         }
-                    } else {
-                        return <MultipurposeScreen type={props.searchName} />
-                    }
-                })()
-            }
+                    })()
+                }
+            </div>
         </div>
     )
 })

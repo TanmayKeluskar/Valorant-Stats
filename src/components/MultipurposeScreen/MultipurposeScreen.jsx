@@ -5,7 +5,7 @@ import errorIcon from '../../assets/warning.png'
 
 function MultipurposeScreen(props) {
     return (
-        <div className="search-result">
+        <>
             {
                 (() => {
                     switch (props.screen) {
@@ -42,7 +42,7 @@ function MultipurposeScreen(props) {
                     }
                 })()
             }
-        </div>
+        </>
     )
 }
 

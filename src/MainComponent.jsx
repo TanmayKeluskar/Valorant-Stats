@@ -107,6 +107,7 @@ export default function MainComponent() {
 
         setResultCard(["in process"]);
         if (objectName[searchValue.toLowerCase()] !== undefined) {
+            
             getResult(searchValue);
         } else {
             setSearchValue("");

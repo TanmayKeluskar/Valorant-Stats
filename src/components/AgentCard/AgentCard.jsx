@@ -1,23 +1,39 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import ShowImage from '../ShowImage/ShowImage';
 import '../css/cards.css'
+import playIcon from '../../assets/playicon.png'
 
 export default function AgentCard(props) {
+
     const displayData = props.card.data
+
+    const voicePlayer = useRef();
+
     return (
-        <div className="search-result">
+        <>
             {displayData ?
                 <div className="info">
                     <div className="looks">
                         <div className="display-data">
                             <div className='img-text' >
                                 <div className='img'>
-                                    <img alt="agent-pic" className='agent-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
+                                    {displayData.displayIcon != null && displayData.displayName != null && displayData.fullPortrait != null ?
+                                        <ShowImage className='agent-pic' picType="agent" largePic={displayData.fullPortrait} displayName={displayData.displayName} smallPic={displayData.displayIcon}></ShowImage>
+                                        : ""}
                                 </div>
-                                <div className="name">
-                                    <p className='character-name'>
+                                <div className="character-name">
+                                    <div className='name'>
                                         {displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
-                                    </p>
-                                    <p>{displayData.isPlayableCharacter != null ? "Playable Character" : "Non - Playable Character"}</p>
+                                        {displayData.voiceLine.mediaList != null ?
+                                            <>
+                                                <img src={playIcon} alt="play voice" onClick={() => { voicePlayer.current.play() }} />
+                                                <audio className="audioStripe" ref={voicePlayer} preload="true">
+                                                    <source src={displayData.voiceLine.mediaList[0].wave}></source>
+                                                </audio>
+                                            </> : <p>No Voice Found</p>
+                                        }
+                                    </div>
+                                    <div className='type'>{displayData.isPlayableCharacter != null ? "Playable Character" : "Non - Playable Character"}</div>
                                 </div>
                             </div>
                             <div className="description">
@@ -47,17 +63,10 @@ export default function AgentCard(props) {
                                 )
                             }) : <p>No Abilities Found</p>
                         }
-                        <div className="display-voice">
-                            <p className="sub-heads">VOICE</p>
-                            {displayData.voiceLine.mediaList != null ?
-                                <div className="audioStripe">
-                                    <audio controls controlsList="nodownload noplaybackrate" src={displayData.voiceLine.mediaList[0].wave}>Play</audio>
-                                </div> : <p>No Voice Found</p>
-                            }
-                        </div>
                     </div>
                 </div>
-                : ""}
-        </div>
+                : ""
+            }
+        </>
     )
 }

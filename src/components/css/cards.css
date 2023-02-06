@@ -1,5 +1,6 @@
 .info {
     display: flex;
+    height: 100%;
     color: white;
 }
 
@@ -7,7 +8,6 @@
     width: 30%;
     color: rgb(49, 49, 49);
 }
-
 
 .display-data {
     font-family: "TungstenBold";
@@ -28,17 +28,30 @@
 
 .display-data .weapon-pic {
     padding: 50px 0 0 0;
-    max-width: 335px;
-    max-height: 170px;
+    max-width: 100%;
+    max-height: 100%;
+    background-image: radial-gradient(white, #ff4655 70%);
 }
 
 .display-data .name {
-    font-size: 40px;
-    margin: 0px;
+    width: 100%;
+    font-size: 4.5vmax;
 }
 
-.display-data .name .character-name {
-    font-size: 80px;
+.display-data .name img {
+    margin-left: 5px;
+    width: 2vmax;
+}
+
+.display-data .type {
+    font-size: 2.5vmax;
+}
+
+.audioStripe img {
+    width: 50px;
+    height: 50px;
+    border: 2px rgb(49, 49, 49);
+    border-radius: 50px;
 }
 
 .display-data .description {
@@ -46,6 +59,9 @@
     font-weight: 900;
     font-size: 14px;
     font-family: 'poppins';
+    border-left: 4px solid rgb(49, 49, 49);
+    padding-left: 5px;
+    background-color: #ff4655;
     overflow-y: scroll;
 }
 
@@ -56,7 +72,7 @@
 .info-items {
     overflow-y: scroll;
     width: 70%;
-    height: 575px;
+    height: 100%;
     padding: 10px;
     background: rgb(49, 49, 49);
     border-radius: 0 10px 10px 0;
@@ -64,6 +80,10 @@
 
 .info-items img {
     width: 20px;
+}
+
+.info-items .weapon-mobile-view {
+    display: none;
 }
 
 .info-items .weapon-skin {
@@ -88,22 +108,10 @@
     font-size: 22px;
 }
 
-.display-voice {
-    display: flex;
-}
-
-.display-voice .sub-heads {
-    width: 20%;
-}
-
-.display-voice .audioStripe {
-    text-align: right;
-    width: 80%;
-}
-
 .display-weapon {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .display-weapon .display-item {
@@ -115,14 +123,79 @@
     font-size: 16px;
 }
 
-/* Desktops and laptops ----------- */
-@media only screen and (max-width : 1280px) {}
+.zoom-modal {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    background-image: radial-gradient(#ff4655, #ff4655, transparent 30%);
+    transition: opacity ease 0.4s;
+}
 
-/* iPads to Smartphone for Common Elements ----------- */
-@media only screen and (max-width : 1024px) {}
+.zoom-modal p {
+    font-family: poppins;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
 
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (max-width : 760px) {
+.zoom-modal .zoom-container {
+   text-align: center;
+}
+
+.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.zoom-modal .close-item {
+    vertical-align: top;
+    color: white;
+}
+
+.zoom-modal .zoom-item {
+    width: 85%;
+    object-fit: contain;
+}
+
+.zoom-modal .zoom-item-agent {
+    width: 60%;
+    object-fit: contain;
+}
+
+/* Desktops and iPads, Tabs ----------- */
+@media only screen and (max-width : 1280px) {
+    .looks, .display-data, .display-data .agent-pic {
+        height: 100%;
+    }
+
+    .display-data, .img-text, .img, .character-name {
+        width: 100%;
+    }
+
+    .display-data .img-text {
+        height: 55%;
+    }
+
+    .display-data .img {
+        height: 60%;
+    }
+
+    .display-data .description {
+        font-size: 13px;
+    }
+}
+
+/* Smartphones, Mini Tablet and Big Mobile (portrait and landscape) ----------- */
+@media only screen and (max-width : 900px) {
     .looks {
         width: 100%;
         height: 30%;
@@ -131,11 +204,9 @@
     .info {
         display: block;
         margin-top: 10px;
-        height: 100%;
     }
 
     .display-data {
-        height: 100%;
         padding: 0;
     }
 
@@ -159,14 +230,23 @@
         max-width: 90%;
     }
 
-    .display-data .name {
-        font-size: 25px;
+    .display-data .character-name {
         width: 50%;
+        height: 100%;
         text-align: right;
     }
 
-    .display-data .name .character-name {
-        font-size: 70px;
+    .display-data .name {
+        height: 60%;
+        font-size: 8vmin;
+    }
+
+    .display-data .name img {
+        width: 4vmin;
+    }
+
+    .display-data .type {
+        font-size: 4vmin;
     }
 
     .display-data .description {
@@ -180,12 +260,15 @@
         padding: 10px;
         border-radius: 0 0 10px 10px;
     }
+
+    .info-items .weapon-mobile-view {
+        display: block;
+    }
 }
 
-/* Smartphones (portrait and landscape) ----------- */
+/* Smartphones (portrait) ----------- */
 @media only screen and (max-width : 480px) and (orientation : portrait) {
     .looks {
-        width: 100%;
         height: 15%;
     }
 
@@ -195,17 +278,26 @@
     }
 
     .display-data .name {
-        font-size: 17px;
+        font-size: 10vmin;
     }
 
-    .display-data .name .character-name {
-        font-size: 30px;
+    .display-data .name img {
+        width: 6vmin;
+    }
+
+    .display-data .type {
+        font-size: 5vmin;
     }
 
     .info-items {
         height: 85%;
     }
-}
 
-/* X-Tra Small Devices  (portrait and landscape) ----------- */
-@media only screen and (max-width : 320px) {}
+    .sub-heads {
+        font-size: 25px;
+    }
+
+    .display-item span {
+        font-size: 16px;
+    }
+}

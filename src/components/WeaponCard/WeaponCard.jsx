@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/cards.css'
+import ShowImage from '../ShowImage/ShowImage';
 
 export default function WeaponCard(props) {
     const displayData = props.card.data
@@ -7,7 +8,7 @@ export default function WeaponCard(props) {
     const skinArray = /standard|random|luxe knife/;
 
     return (
-        <div className="search-result">
+        <>
             {displayData ?
                 <div className="info">
                     <div className="looks">
@@ -16,14 +17,14 @@ export default function WeaponCard(props) {
                                 <div className='img'>
                                     <img alt="weapon-pic" className='weapon-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
                                 </div>
-                                <div className="name">
-                                    <p className='character-name'>
+                                <div className="character-name">
+                                    <p className='name'>
                                         {displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
                                     </p>
-                                    <p>
+                                    <div className='type'>
                                         {displayData.shopData != null ?
                                             displayData.shopData.categoryText != null ? <p>Category - {displayData.shopData.categoryText}</p> : <p>No Category</p> : ""}
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                             <div className="description weapon-description">
@@ -34,6 +35,9 @@ export default function WeaponCard(props) {
                                     {displayData.weaponStats.magazineSize != null ? <p>Magazine Size - {displayData.weaponStats.magazineSize}</p> : ""}
                                     {displayData.weaponStats.reloadTimeSeconds != null ? <p>Reload Speed - {displayData.weaponStats.reloadTimeSeconds} secs</p> : ""}
                                     {displayData.weaponStats.firstBulletAccuracy != null ? <p>Accuracy - {displayData.weaponStats.firstBulletAccuracy} on first bullet</p> : ""}
+                                    {displayData.weaponStats.equipTimeSeconds != null ? <p>Switching Time - {displayData.weaponStats.equipTimeSeconds} secs</p> : ""}
+                                    {displayData.weaponStats.runSpeedMultiplier != null ? <p>Run Speed - {displayData.weaponStats.runSpeedMultiplier}</p> : ""}
+                                    {displayData.weaponStats.wallPenetration != null ? <p>Wall Penetration - {displayData.weaponStats.wallPenetration.split("::")[1]}</p> : ""}
                                 </> : ""
                                 }
                             </div>
@@ -41,14 +45,21 @@ export default function WeaponCard(props) {
                     </div>
                     <div className="info-items">
                         {displayData.weaponStats != null ? <>
-                            <p className="sub-heads">MORE WEAPON STATS</p>
-                            <hr />
-                            <div className="display-item">
-                                {displayData.weaponStats.equipTimeSeconds != null ? <p>Switching Time - {displayData.weaponStats.equipTimeSeconds} secs</p> : ""}
-                                {displayData.weaponStats.runSpeedMultiplier != null ? <p>Run Speed - {displayData.weaponStats.runSpeedMultiplier}</p> : ""}
-                                {displayData.weaponStats.wallPenetration != null ? <p>Wall Penetration - {displayData.weaponStats.wallPenetration.split("::")[1]}</p> : ""}
-                            </div>
-                            <p className="sub-heads">After ADS (Aim Down Sight)</p>
+                            {displayData.weaponStats != null ? <div className="weapon-mobile-view">
+                                <p className="sub-heads">WEAPON STATS</p>
+                                <hr />
+                                <div className="display-item">
+                                    {displayData.weaponStats.fireRate != null ? <p>Fire Rate - {displayData.weaponStats.fireRate}</p> : ""}
+                                    {displayData.weaponStats.magazineSize != null ? <p>Magazine Size - {displayData.weaponStats.magazineSize}</p> : ""}
+                                    {displayData.weaponStats.reloadTimeSeconds != null ? <p>Reload Speed - {displayData.weaponStats.reloadTimeSeconds} secs</p> : ""}
+                                    {displayData.weaponStats.firstBulletAccuracy != null ? <p>Accuracy - {displayData.weaponStats.firstBulletAccuracy} on first bullet</p> : ""}
+                                    {displayData.weaponStats.equipTimeSeconds != null ? <p>Switching Time - {displayData.weaponStats.equipTimeSeconds} secs</p> : ""}
+                                    {displayData.weaponStats.runSpeedMultiplier != null ? <p>Run Speed - {displayData.weaponStats.runSpeedMultiplier}</p> : ""}
+                                    {displayData.weaponStats.wallPenetration != null ? <p>Wall Penetration - {displayData.weaponStats.wallPenetration.split("::")[1]}</p> : ""}
+                                </div>
+                            </div> : ""
+                            }
+                            <p className="sub-heads">WEAPON STATS After ADS (Aim Down Sight)</p>
                             <hr />
                             {displayData.weaponStats.adsStats != null ?
                                 <div className="display-item">
@@ -81,8 +92,8 @@ export default function WeaponCard(props) {
                                     return (
                                         skin.displayIcon != null && skin.displayName != null && !skinArray.test(skin.displayName.toLowerCase()) ?
                                             <div className="display-item" key={skin.displayName}>
-                                                <img alt="skin-icon" className='weapon-skin' src={skin.displayIcon} />
-                                                <p><span>{skin.displayName}</span></p>
+                                                <ShowImage className='weapon-skin' displayName={skin.displayName} smallPic={skin.displayIcon}></ShowImage>
+                                                <p>{skin.displayName}</p>
                                             </div> : ""
                                     )
                                 }) : <p>No Skins Found</p>
@@ -91,6 +102,6 @@ export default function WeaponCard(props) {
                     </div>
                 </div>
                 : ""}
-        </div>
+        </>
     )
 }
