@@ -161,7 +161,7 @@
     color: white;
 }
 
-.zoom-modal .zoom-item {
+.zoom-modal .zoom-item-default {
     width: 85%;
     object-fit: contain;
 }

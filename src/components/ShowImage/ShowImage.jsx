@@ -38,24 +38,9 @@ const ShowImage = ({ picType, smallPic, largePic, displayName, ...params }) => {
                     <img src={smallPic} alt={displayName} {...params} />
                     <div className='zoom-modal show'>
                         <div className='zoom-container'>
-                            {(() => {
-                                switch (picType) {
-                                    case "agent":
-                                        return <>
-                                            <img src={largePic} alt={displayName} {...params} className='zoom-item-agent' />
-                                            <span className='close-item' onClick={zoomedOut}>&#10006;</span>
-                                            <p>{displayName}</p>
-                                        </>
-                                    default:
-                                        return <>
-                                            <img src={smallPic} alt={displayName} {...params} className='zoom-item' />
-                                            <span className='close-item' onClick={zoomedOut}>&#10006;</span>
-                                            <p>{displayName}</p>
-                                        </>
-
-                                }
-                            })()}
-
+                            <img src={largePic ? largePic : smallPic} alt={displayName} {...params} className={'zoom-item-' + (picType ? picType : "default")} />
+                            <span className='close-item' onClick={zoomedOut}>&#10006;</span>
+                            <p>{displayName}</p>
                         </div>
                     </div>
                 </>

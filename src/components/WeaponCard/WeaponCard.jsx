@@ -1,6 +1,7 @@
 import React from 'react'
-import '../css/cards.css'
 import ShowImage from '../ShowImage/ShowImage';
+import DisplayTopData from '../MiniComponents/DisplayTopData';
+import '../css/cards.css'
 
 export default function WeaponCard(props) {
     const displayData = props.card.data
@@ -11,38 +12,7 @@ export default function WeaponCard(props) {
         <>
             {displayData ?
                 <div className="info">
-                    <div className="looks">
-                        <div className="display-data">
-                            <div className='img-text' >
-                                <div className='img'>
-                                    <img alt="weapon-pic" className='weapon-pic' src={displayData.displayIcon != null ? displayData.displayIcon : ""} />
-                                </div>
-                                <div className="character-name">
-                                    <p className='name'>
-                                        {displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
-                                    </p>
-                                    <div className='type'>
-                                        {displayData.shopData != null ?
-                                            displayData.shopData.categoryText != null ? <p>Category - {displayData.shopData.categoryText}</p> : <p>No Category</p> : ""}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="description weapon-description">
-                                {displayData.shopData != null ? <b>{displayData.shopData.cost != null ? <p>Cost - {displayData.shopData.cost} CREDS</p> : <p>0</p>}</b> : ""
-                                }
-                                {displayData.weaponStats != null ? <>
-                                    {displayData.weaponStats.fireRate != null ? <p>Fire Rate - {displayData.weaponStats.fireRate}</p> : ""}
-                                    {displayData.weaponStats.magazineSize != null ? <p>Magazine Size - {displayData.weaponStats.magazineSize}</p> : ""}
-                                    {displayData.weaponStats.reloadTimeSeconds != null ? <p>Reload Speed - {displayData.weaponStats.reloadTimeSeconds} secs</p> : ""}
-                                    {displayData.weaponStats.firstBulletAccuracy != null ? <p>Accuracy - {displayData.weaponStats.firstBulletAccuracy} on first bullet</p> : ""}
-                                    {displayData.weaponStats.equipTimeSeconds != null ? <p>Switching Time - {displayData.weaponStats.equipTimeSeconds} secs</p> : ""}
-                                    {displayData.weaponStats.runSpeedMultiplier != null ? <p>Run Speed - {displayData.weaponStats.runSpeedMultiplier}</p> : ""}
-                                    {displayData.weaponStats.wallPenetration != null ? <p>Wall Penetration - {displayData.weaponStats.wallPenetration.split("::")[1]}</p> : ""}
-                                </> : ""
-                                }
-                            </div>
-                        </div>
-                    </div>
+                    <DisplayTopData dataType="weapon" displayData={displayData} />
                     <div className="info-items">
                         {displayData.weaponStats != null ? <>
                             {displayData.weaponStats != null ? <div className="weapon-mobile-view">
