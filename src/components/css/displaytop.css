@@ -1,0 +1,159 @@
+.looks {
+    width: 30%;
+    color: rgb(49, 49, 49);
+}
+
+.display-data {
+    font-family: "TungstenBold";
+    padding: 0px 20px 0 0;
+}
+
+.display-data p {
+    margin: 5px 0;
+}
+
+.display-data .img-text {
+    display: block;
+}
+
+.display-data .agent-pic {
+    height: 200px;
+}
+
+.display-data .weapon-pic {
+    padding: 50px 0 0 0;
+    max-width: 100%;
+    max-height: 100%;
+    background-image: radial-gradient(white, #ff4655 70%);
+}
+
+.display-data .name {
+    width: 100%;
+    font-size: 4.5vmax;
+}
+
+.display-data .name img {
+    margin-left: 5px;
+    width: 2vmax;
+}
+
+.display-data .type {
+    font-size: 2.5vmax;
+}
+
+.display-data .description {
+    color: rgb(49, 49, 49);
+    font-weight: 900;
+    font-size: 14px;
+    font-family: 'poppins';
+    border-left: 4px solid rgb(49, 49, 49);
+    padding-left: 5px;
+    background-color: #ff4655;
+    overflow-y: scroll;
+}
+
+.display-data .weapon-description {
+    font-weight: 900;
+}
+
+/* Desktops and iPads, Tabs ----------- */
+@media only screen and (max-width : 1280px) {
+    .looks, .display-data, .display-data .agent-pic {
+        height: 100%;
+    }
+
+    .display-data, .img-text, .img, .character-name {
+        width: 100%;
+    }
+
+    .display-data .img-text {
+        height: 55%;
+    }
+
+    .display-data .img {
+        height: 60%;
+    }
+
+    .display-data .description {
+        font-size: 13px;
+    }
+}
+
+/* Smartphones, Mini Tablet and Big Mobile (portrait and landscape) ----------- */
+@media only screen and (max-width : 900px) {
+    .looks {
+        width: 100%;
+        height: 30%;
+    }
+
+    .display-data {
+        padding: 0;
+    }
+
+    .display-data .img-text {
+        display: flex;
+        padding: 0;
+        height: 100%;
+    }
+
+    .display-data .img {
+        width: 50%;
+        height: 100%;
+    }
+
+    .display-data .agent-pic {
+        height: 90%;
+    }
+
+    .display-data .weapon-pic {
+        padding: 30px 0 0 0;
+        max-width: 90%;
+    }
+
+    .display-data .character-name {
+        width: 50%;
+        height: 100%;
+        text-align: right;
+    }
+
+    .display-data .name {
+        height: 60%;
+        font-size: 8vmin;
+    }
+
+    .display-data .name img {
+        width: 4vmin;
+    }
+
+    .display-data .type {
+        font-size: 4vmin;
+    }
+
+    .display-data .description {
+        display: none;
+    }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 480px) and (orientation : portrait) {
+    .looks {
+        height: 15%;
+    }
+
+    .display-data .weapon-pic {
+        padding: 10px 0 0 0;
+        max-width: 90%;
+    }
+
+    .display-data .name {
+        font-size: 10vmin;
+    }
+
+    .display-data .name img {
+        width: 6vmin;
+    }
+
+    .display-data .type {
+        font-size: 5vmin;
+    }
+}

@@ -43,6 +43,11 @@ export default function MainComponent() {
         "melee": "2f59173c-4bed-b6c3-2191-dea9b58be9c7"
     }
 
+    let gearNames = {
+        "heavy shield": "822bcab2-40a2-324e-c137-e09195ad7692",
+        "light shield": "4dec83d5-4902-9ab3-bed6-a7a390761157"
+    }
+
     // search type to be passed in the api url
     const [searchType, setSearchType] = useState("agents");
     const [searchName, setSearchName] = useState("Agent");
@@ -70,6 +75,9 @@ export default function MainComponent() {
             case "weapons":
                 setObjectName(weaponNames);
                 break;
+            case "gear":
+                setObjectName(gearNames);
+                break;
             default:
                 setObjectName(agentNames);
         }
@@ -81,7 +89,7 @@ export default function MainComponent() {
     }
 
     useEffect(() => {
-        
+
         async function getResult(searchValue) {
             let urlCreated = "https://valorant-api.com/v1/" + searchType + "/" + objectName[searchValue.toLowerCase()]
             const result = await fetch(urlCreated)
@@ -107,7 +115,7 @@ export default function MainComponent() {
 
         setResultCard(["in process"]);
         if (objectName[searchValue.toLowerCase()] !== undefined) {
-            
+
             getResult(searchValue);
         } else {
             setSearchValue("");

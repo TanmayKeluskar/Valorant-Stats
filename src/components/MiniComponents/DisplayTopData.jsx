@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import ShowImage from '../ShowImage/ShowImage';
 import playIcon from '../../assets/playicon.png'
+import '../css/displaytop.css'
 
 function DisplayTopData(props) {
 
