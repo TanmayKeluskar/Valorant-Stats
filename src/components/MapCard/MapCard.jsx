@@ -9,7 +9,6 @@ export default function MapCard(props) {
     let sortedCallouts = displayData["callouts"].sort((a, b) => {
         return a.superRegionName.localeCompare(b.superRegionName);
     });
-    console.log(sortedCallouts);
 
     let firstPos = sortedCallouts[0].superRegionName;
     let firstLoad = true
@@ -50,22 +49,18 @@ export default function MapCard(props) {
                                             firstLoad = true;
                                         }
                                         return (
-                                            <>
-                                                <div className="callout-container">
-                                                    <div className={"callout-region" + (firstLoad ? " first-border" : "")}>
-                                                        {firstLoad ? <><p>{callout.superRegionName}</p></> : ""}
+                                            <div className="callout-container" key={Math.round(callout.location.x)}>
+                                                <div className={"callout-region" + (firstLoad ? " first-border" : "")}>
+                                                    {firstLoad ? <><p>{callout.superRegionName}</p></> : ""}
 
-                                                    </div>
-                                                    <div className={"callout-data" + (firstLoad ? " first-border" : "")}>
-                                                        <div className="display-item" key={callout.regionName} >
-                                                            {callout.regionName != null && callout.location != null || callout.location != ""
-                                                                ? <p>{callout.regionName} : {Math.round(callout.location.x)}, {Math.round(callout.location.y)}</p>
-                                                                : <p>Not Found</p>}
-                                                        </div>
-                                                    </div>
+                                                </div>
+                                                <div className={"callout-data" + (firstLoad ? " first-border" : "")}>
+                                                    {callout.regionName !== null && (callout.location !== null || callout.location !== "")
+                                                        ? <p>{callout.regionName} : {Math.round(callout.location.x)}, {Math.round(callout.location.y)}</p>
+                                                        : <p>Not Found</p>}
                                                 </div>
                                                 {firstLoad = false}
-                                            </>
+                                            </div>
                                         )
                                     })
                                 )
