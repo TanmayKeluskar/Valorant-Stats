@@ -6,13 +6,13 @@ export default function MapCard(props) {
 
     const displayData = props.card.data
 
-   /*  let sortedCallouts = displayData["callouts"].sort((a, b) => {
+    let sortedCallouts = displayData["callouts"].sort((a, b) => {
         return a.superRegionName.localeCompare(b.superRegionName);
     });
     console.log(sortedCallouts);
 
     let firstPos = sortedCallouts[0].superRegionName;
-    let firstLoad = true */
+    let firstLoad = true
 
     return (
         <>
@@ -29,7 +29,7 @@ export default function MapCard(props) {
                                     smallPic={displayData.splash != null ? displayData.splash : ""}
                                     displayName={displayData.displayName != null ? displayData.displayName + " Topview" : ""}
                                 ></ShowImage>
-                                <p>Top View</p>
+                                <p className='map-caption'>Top View</p>
                             </> : "No Data Found"}
                         {displayData.displayIcon != null ?
                             <>
@@ -38,39 +38,39 @@ export default function MapCard(props) {
                                     smallPic={displayData.displayIcon != null ? displayData.displayIcon : ""}
                                     displayName={displayData.displayName != null ? displayData.displayName + " Strategic View" : ""}
                                 ></ShowImage>
-                                <p>Strategic View</p>
+                                <p className='map-caption'>Strategic View</p>
                             </> : ""}
-                        {/* {(() => {
-                            return (
-                                sortedCallouts.map((callout) => {
-                                    if (firstPos === callout.superRegionName) {
+                        <p className="image-name">CALLOUTS</p>
+                        <div className='map-dats'>
+                            {(() => {
+                                return (
+                                    sortedCallouts.map((callout) => {
+                                        if (firstPos !== callout.superRegionName) {
+                                            firstPos = callout.superRegionName;
+                                            firstLoad = true;
+                                        }
                                         return (
-                                            <div className='map-dats'>
-                                                {firstLoad ? <><p className="sub-heads">{callout.superRegionName}</p><hr /></> : ""}
+                                            <>
+                                                <div className="callout-container">
+                                                    <div className={"callout-region" + (firstLoad ? " first-border" : "")}>
+                                                        {firstLoad ? <><p>{callout.superRegionName}</p></> : ""}
+
+                                                    </div>
+                                                    <div className={"callout-data" + (firstLoad ? " first-border" : "")}>
+                                                        <div className="display-item" key={callout.regionName} >
+                                                            {callout.regionName != null && callout.location != null || callout.location != ""
+                                                                ? <p>{callout.regionName} : {Math.round(callout.location.x)}, {Math.round(callout.location.y)}</p>
+                                                                : <p>Not Found</p>}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 {firstLoad = false}
-                                                <div className="display-item" key={callout.regionName} >
-                                                    {callout.regionName != null && callout.location != null || callout.location != "" ? <p>{callout.regionName} : {callout.location.x}, {callout.location.y}</p> : <p>Not Found</p>}
-                                                </div>
-                                            </div>
+                                            </>
                                         )
-                                    } else {
-                                        firstPos = callout.superRegionName;
-                                        firstLoad = false;
-                                        return (
-                                            <div className='map-dats'>
-                                                {firstLoad ? <p className="sub-heads">{callout.superRegionName}</p> : ""}
-                                                {firstLoad = true}
-                                                <hr />
-                                                <div className="display-item" key={callout.regionName} >
-                                                    {callout.regionName != null ? <p>{callout.regionName}</p> : <p>Not Found</p>}
-                                                    {callout.regionName != null ? <p>{callout.regionName}</p> : <p>Not Found</p>}
-                                                </div>
-                                            </div>
-                                        )
-                                    }
-                                })
-                            )
-                        })()} */}
+                                    })
+                                )
+                            })()}
+                        </div>
                     </div>
                 </div>
                 : ""
