@@ -9,7 +9,7 @@ export default function GearCard(props) {
         <>
             {displayData ?
                 <div className="display-fullwidth">
-                    <div className='content-div'>
+                    <div className='content-div-gear'>
                         <img className="gear-pic" alt={displayData.displayName != null ? displayData.displayName : ""}
                             src={displayData.displayIcon != null ? displayData.displayIcon : ""}
                         />

@@ -12,9 +12,13 @@
     border-radius: 10px;
 }
 
-.content-div {
+.content-div-maps {
     height: 100%;
     width: 100%;
+    overflow-y: scroll;
+}
+
+.content-div-gear {
     overflow-y: scroll;
 }
 
@@ -60,7 +64,7 @@
     width: 70%;
 }
 
-.first-border{
+.first-border {
     border-top: 2px solid white;
 }
 

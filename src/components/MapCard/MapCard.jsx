@@ -17,7 +17,7 @@ export default function MapCard(props) {
         <>
             {displayData ?
                 <div className="display-fullwidth">
-                    <div className='content-div'>
+                    <div className='content-div-maps'>
                         <p className='image-name'>
                             {displayData.displayName != null ? displayData.displayName.toUpperCase() : ""}
                         </p>
