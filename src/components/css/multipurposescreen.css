@@ -43,8 +43,8 @@
     }
 }
 
-/* Smartphones, Mini Tablet and Big Mobile (portrait and landscape) ----------- */
-@media only screen and (max-width : 900px) {
+/* Smartphones, Mini Tablet and Big Mobile (portrait) ----------- */
+@media only screen and (max-width : 900px) and (orientation: portrait) {
     .message {
         font-size: 5vmin;
         border-top: 2px solid #ff4655;

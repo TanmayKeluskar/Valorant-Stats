@@ -1,5 +1,5 @@
 import React from 'react'
-import './MultipurposeScreen.css'
+import '../css/multipurposescreen.css'
 import searchIcon from '../../assets/search-icon.png'
 import errorIcon from '../../assets/warning.png'
 
