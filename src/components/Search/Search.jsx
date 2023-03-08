@@ -10,7 +10,7 @@ import './Search.css';
 const Search = forwardRef((props, ref) => {
 
     const [showMenu, setShowMenu] = useState(false);
-    const [selectedValue, setSelectedValue] = useState(null);
+    const [selectedValue, setSelectedValue] = useState(props.searchValue);
     const [searchHint, setSearchHint] = useState("");
     const searchRef = useRef();
     const hintDisplay = useRef();
